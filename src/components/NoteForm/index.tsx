@@ -15,6 +15,7 @@ const NoteForm = () => <form className="flex flex-col items-stretch justify-cent
         <label className="font-medium" htmlFor="description">Description</label>
         <input className="px-2 py-1 border border-neutral-300 rounded-xl" type="text" id="description" name="description" placeholder="wth is happening with that pipeline?!" />
     </div>
+    <button className="px-8 py-1 bg-purple-900 text-white rounded-full cursor-pointer" type="submit">Add Note</button>
 </form>
 
 export default NoteForm
