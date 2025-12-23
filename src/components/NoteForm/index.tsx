@@ -8,7 +8,7 @@ const NoteForm = () => {
         description: "",
     })
 
-    const handleChange: ChangeEventHandler<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> = ({ target: { name, value } }) => {
+    const handleChange: ChangeEventHandler<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> = ({ currentTarget: { name, value } }) => {
         setForm((prevForm) => ({ ...prevForm, [name]: value }))
     }
 
