@@ -1,6 +1,11 @@
-import { useState, type ChangeEventHandler } from "react"
+import { useState, type ChangeEventHandler, type Dispatch, type FormEventHandler, type SetStateAction } from "react"
+import type { Todo } from "../../types/Todo"
 
-const NoteForm = () => {
+type NoteFormProps = {
+    setTodos: Dispatch<SetStateAction<Todo[]>>
+}
+
+const NoteForm = (props: NoteFormProps) => {
     const [form, setForm] = useState({
         title: "",
         priority: "",
@@ -12,7 +17,12 @@ const NoteForm = () => {
         setForm((prevForm) => ({ ...prevForm, [name]: value }))
     }
 
-    return <form className="flex flex-col gap-3 items-stretch justify-center">
+    const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+        event.preventDefault();
+        props.setTodos((prevTodos) => [...prevTodos, { ...form, id: Date.now() }]);
+    }
+
+    return <form className="flex flex-col gap-3 items-stretch justify-center" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-1 items-stretch justify-between">
             <label className="font-medium" htmlFor="title">Title</label>
             <input className="h-8 px-3 border border-neutral-300 rounded-full" type="text" id="title" name="title" placeholder="fix github actions yml" value={form.title} onChange={handleChange} />
