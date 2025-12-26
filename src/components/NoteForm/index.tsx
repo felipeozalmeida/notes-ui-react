@@ -1,6 +1,6 @@
 
 import { useState, type ChangeEventHandler, type FC, type FormEventHandler } from "react"
-import type { Note } from "../../types/Note"
+import noteSchema, { type Note } from "../../types/Note"
 
 const INITIAL_FORM_DATA = {
     title: "",
@@ -23,7 +23,7 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate }) => {
     const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
         setFormData(INITIAL_FORM_DATA)
-        onCreate({ ...formData, id: Date.now() })
+        onCreate(noteSchema.parse({ ...formData, id: Date.now() }))
     }
 
     return <form className="flex flex-col gap-3 items-stretch justify-center" onSubmit={handleSubmit}>
