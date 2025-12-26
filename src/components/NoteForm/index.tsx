@@ -1,5 +1,5 @@
 
-import { useState, type ChangeEventHandler, type FormEventHandler } from "react"
+import { useState, type ChangeEventHandler, type FC, type FormEventHandler } from "react"
 import type { Note } from "../../types/Note"
 
 const INITIAL_FORM_DATA = {
@@ -13,7 +13,7 @@ type NoteFormProps = {
     onCreate: (note: Note) => void
 }
 
-const NoteForm = (props: NoteFormProps) => {
+const NoteForm: FC<NoteFormProps> = ({ onCreate }) => {
     const [formData, setFormData] = useState(INITIAL_FORM_DATA)
 
     const handleChange: ChangeEventHandler<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> = ({ currentTarget: { name, value } }) => {
@@ -23,7 +23,7 @@ const NoteForm = (props: NoteFormProps) => {
     const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
         setFormData(INITIAL_FORM_DATA)
-        props.onCreate({ ...formData, id: Date.now() })
+        onCreate({ ...formData, id: Date.now() })
     }
 
     return <form className="flex flex-col gap-3 items-stretch justify-center" onSubmit={handleSubmit}>
