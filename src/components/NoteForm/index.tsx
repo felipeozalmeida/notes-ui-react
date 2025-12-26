@@ -1,6 +1,6 @@
 
 import { useState, type ChangeEventHandler, type FC, type FormEventHandler } from "react"
-import noteSchema, { type Note } from "../../types/Note"
+import noteSchema, { type Note, PRIORITY, CATEGORY } from "../../types/Note"
 
 const INITIAL_FORM_DATA = {
     title: "",
@@ -40,17 +40,18 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate }) => {
                 <label className="font-medium" htmlFor="priority">Priority</label>
                 <select className="h-8 px-3 border border-neutral-300 rounded-full" name="priority" id="priority" value={formData.priority} onChange={handleChange}>
                     <option value="">select a priority</option>
-                    <option>high</option>
-                    <option>medium</option>
-                    <option>low</option>
+                    {Object.values(PRIORITY).map((value) => (
+                        <option key={value} value={value}>{value}</option>
+                    ))}
                 </select>
             </div>
             <div className="flex flex-col gap-1 items-stretch justify-between sm:basis-8/12">
                 <label className="font-medium" htmlFor="category">Category</label>
                 <select className="h-8 px-3 border border-neutral-300 rounded-full" name="category" id="category" value={formData.category} onChange={handleChange}>
                     <option value="">select a category</option>
-                    <option>work</option>
-                    <option>personal</option>
+                    {Object.values(CATEGORY).map((value) => (
+                        <option key={value} value={value}>{value}</option>
+                    ))}
                 </select>
             </div>
         </div>
