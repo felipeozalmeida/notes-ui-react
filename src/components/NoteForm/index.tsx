@@ -22,8 +22,12 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate }) => {
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
-        setFormData(INITIAL_FORM_DATA)
-        onCreate(noteSchema.parse({ ...formData, id: Date.now() }))
+        const newNote = { ...formData, id: Date.now() }
+        const parseResult = noteSchema.safeParse(newNote)
+        if (parseResult.success) {
+            setFormData(INITIAL_FORM_DATA)
+            onCreate(parseResult.data)
+        }
     }
 
     return <form className="flex flex-col gap-3 items-stretch justify-center" onSubmit={handleSubmit}>
