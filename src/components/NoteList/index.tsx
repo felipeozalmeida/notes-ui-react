@@ -7,7 +7,7 @@ interface NoteListProps {
 
 const NoteList: FC<NoteListProps> = ({ notes }) => {
   if (!notes.length) {
-    return <div>No notes available.</div>;
+    return <p className="text-center text-gray-500">No notes available.</p>;
   }
   return (
     <ul className="flex flex-col gap-4">
