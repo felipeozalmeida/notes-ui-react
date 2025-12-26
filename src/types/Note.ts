@@ -1,4 +1,4 @@
-export type Todo = {
+export type Note = {
   id: number
   title: string
   priority: string
