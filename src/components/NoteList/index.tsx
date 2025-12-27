@@ -1,5 +1,12 @@
 import type { FC } from 'react';
 import type { Note } from '../../types';
+import { PRIORITY } from '../../types/Note';
+
+const PRIORITY_COLOR = {
+  [PRIORITY.high]: 'bg-red-100 text-red-700',
+  [PRIORITY.medium]: 'bg-yellow-100 text-yellow-700',
+  [PRIORITY.low]: 'bg-green-100 text-green-700',
+} as const;
 
 interface NoteListProps {
   notes: Note[];
@@ -22,7 +29,11 @@ const NoteList: FC<NoteListProps> = ({ notes }) => {
           </div>
           <p className="text-neutral-600 text-sm">{note.description}</p>
           <div className="flex items-center justify-between gap-2 mt-2">
-            <span className="text-xs px-2 py-1 rounded bg-yellow-100 text-yellow-700 font-medium">Priority: {note.priority}</span>
+            <span
+              className={`text-xs px-2 py-1 rounded font-medium ${PRIORITY_COLOR[note.priority]}`}
+            >
+              Priority: {note.priority}
+            </span>
             <span className="text-xs text-neutral-400">ID: {note.id}</span>
           </div>
         </li>
