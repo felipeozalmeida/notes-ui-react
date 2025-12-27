@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import type { Note } from '../../types';
 import { PRIORITY } from '../../types/Note';
+import { IconCopy } from '@tabler/icons-react';
 
 const PRIORITY_COLOR = {
   [PRIORITY.high]: 'bg-red-100 text-red-700',
@@ -34,7 +35,18 @@ const NoteList: FC<NoteListProps> = ({ notes }) => {
             >
               Priority: {note.priority}
             </span>
-            <span className="text-xs text-neutral-400">ID: {note.id}</span>
+            <span className="flex items-center gap-1">
+              <button
+                type="button"
+                className="p-1 flex items-center text-neutral-400 hover:text-neutral-600 focus:outline-none cursor-pointer"
+                title="Copy ID"
+                onClick={() => navigator.clipboard.writeText(note.id.toString())}
+                aria-label="Copy ID"
+              >
+                <IconCopy size={16} stroke={1.5} />
+              </button>
+              <span className="text-xs text-neutral-400">ID: {note.id}</span>
+            </span>
           </div>
         </li>
       ))}
