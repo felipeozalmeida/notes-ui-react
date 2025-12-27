@@ -1,5 +1,6 @@
 
 import { useState, type ChangeEventHandler, type FC, type FormEventHandler } from "react"
+import toast from "react-hot-toast";
 import noteSchema, { type Note, PRIORITY, CATEGORY } from "../../types/Note"
 
 const INITIAL_FORM_DATA = {
@@ -24,10 +25,13 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate }) => {
         event.preventDefault();
         const newNote = { ...formData, id: Date.now() }
         const parseResult = noteSchema.safeParse(newNote)
-        if (parseResult.success) {
-            setFormData(INITIAL_FORM_DATA)
-            onCreate(parseResult.data)
+        if (!parseResult.success) {
+            toast.error("All fields are required.")
+            return
         }
+        onCreate(parseResult.data)
+        setFormData(INITIAL_FORM_DATA)
+        toast.success("Note created successfully!")
     }
 
     return <form className="flex flex-col gap-3 items-stretch justify-center" onSubmit={handleSubmit}>
