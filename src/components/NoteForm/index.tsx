@@ -12,9 +12,10 @@ const INITIAL_FORM_DATA = {
 
 type NoteFormProps = {
     onCreate: (note: Note) => void
+    onCancel: () => void
 }
 
-const NoteForm: FC<NoteFormProps> = ({ onCreate }) => {
+const NoteForm: FC<NoteFormProps> = ({ onCreate, onCancel }) => {
     const [formData, setFormData] = useState(INITIAL_FORM_DATA)
 
     const handleChange: ChangeEventHandler<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> = ({ currentTarget: { name, value } }) => {
@@ -63,7 +64,10 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate }) => {
             <label className="font-medium" htmlFor="description">Description</label>
             <textarea className="h-40 px-3 py-2 border border-neutral-300 rounded-2xl resize-none" id="description" name="description" placeholder="wth is happening with that pipeline?!" value={formData.description} onChange={handleChange}></textarea>
         </div>
-        <button className="h-8 mt-1 px-8 bg-purple-900 text-white rounded-full cursor-pointer" type="submit">Add Note</button>
+        <div className="flex flex-col gap-1 mt-1 sm:flex-row-reverse sm:justify-start">
+            <button className="h-8 px-8 bg-purple-900 text-white rounded-full cursor-pointer font-medium" type="submit">Submit</button>
+            <button className="h-8 px-8 text-neutral-500 font-medium cursor-pointer" type="button" onClick={onCancel}>Cancel</button>
+        </div>
     </form>
 }
 
