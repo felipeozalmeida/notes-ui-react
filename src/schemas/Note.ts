@@ -1,6 +1,7 @@
 
 import { z } from 'zod';
-import { CATEGORY, PRIORITY } from '../constants';
+import CATEGORY from '../constants/category';
+import PRIORITY from '../constants/priority';
 
 const noteSchema = z.object({
   id: z.number().positive(),

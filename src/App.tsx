@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Toaster } from "react-hot-toast";
 import { IconPlus } from "@tabler/icons-react";
-import type { Note } from "./schemas"
+import type { Note } from "./schemas/Note"
 import NoteForm from "./components/NoteForm"
 import NoteList from "./components/NoteList";
 
