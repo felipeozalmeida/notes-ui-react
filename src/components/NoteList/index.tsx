@@ -1,8 +1,8 @@
 import type { FC } from 'react';
-import type { Note } from '../../types';
-import { PRIORITY } from '../../types/Note';
-import { IconCopy } from '@tabler/icons-react';
 import toast from 'react-hot-toast';
+import { IconCopy } from '@tabler/icons-react';
+import { PRIORITY } from '../../constants';
+import type { Note } from '../../schemas';
 
 const PRIORITY_COLOR = {
   [PRIORITY.high]: 'bg-red-100 text-red-700',

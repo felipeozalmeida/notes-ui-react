@@ -1,7 +1,8 @@
 
 import { useState, type ChangeEventHandler, type FC, type FormEventHandler } from "react"
 import toast from "react-hot-toast";
-import noteSchema, { type Note, PRIORITY, CATEGORY } from "../../types/Note"
+import { PRIORITY, CATEGORY } from "../../constants"
+import { noteSchema, type Note } from "../../schemas"
 
 const INITIAL_FORM_DATA = {
     title: "",

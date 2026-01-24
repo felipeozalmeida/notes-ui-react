@@ -1,16 +1,6 @@
 
 import { z } from 'zod';
-
-export const PRIORITY = {
-  high: 'high',
-  medium: 'medium',
-  low: 'low',
-} as const;
-
-export const CATEGORY = {
-  work: 'work',
-  personal: 'personal',
-} as const;
+import { CATEGORY, PRIORITY } from '../constants';
 
 const noteSchema = z.object({
   id: z.number().positive(),
