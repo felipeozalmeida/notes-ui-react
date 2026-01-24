@@ -3,7 +3,7 @@ import { useState, type ChangeEventHandler, type FC, type FormEventHandler } fro
 import toast from "react-hot-toast";
 import PRIORITY from "../../constants/priority"
 import CATEGORY from "../../constants/category"
-import noteSchema, { type Note } from "../../schemas/Note"
+import noteSchema, { type Note } from "../../schemas/note"
 
 const INITIAL_FORM_DATA = {
     title: "",

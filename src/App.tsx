@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { Toaster } from "react-hot-toast";
 import { IconPlus } from "@tabler/icons-react";
-import type { Note } from "./schemas/Note"
-import NoteForm from "./components/NoteForm"
-import NoteList from "./components/NoteList";
+import type { Note } from "./schemas/note"
+import NoteForm from "./components/note-form"
+import NoteList from "./components/note-list";
 
 const App = () => {
   const [notes, setNotes] = useState<Note[]>([]);
