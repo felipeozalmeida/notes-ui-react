@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import PRIORITY from "../../constants/priority"
 import CATEGORY from "../../constants/category"
 import noteSchema, { type Note } from "../../schemas/note"
+import InputText from "../input-text"
 
 const INITIAL_FORM_DATA = {
     title: "",
@@ -38,10 +39,7 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate, onCancel }) => {
     }
 
     return <form className="flex flex-col gap-3 items-stretch justify-center" onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-1 items-stretch justify-between">
-            <label className="font-medium" htmlFor="title">Title</label>
-            <input className="h-8 px-3 border border-neutral-300 rounded-full" type="text" id="title" name="title" placeholder="fix github actions yml" value={formData.title} onChange={handleChange} />
-        </div>
+        <InputText label="Title" name="title" placeholder="fix github actions yml" value={formData.title} onChange={handleChange} />
         <div className="flex flex-col gap-2 sm:flex-row sm:items-stretch sm:justify-between">
             <div className="flex flex-col gap-1 items-stretch justify-between sm:basis-4/12">
                 <label className="font-medium" htmlFor="priority">Priority</label>
