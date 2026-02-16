@@ -1,7 +1,6 @@
 const CATEGORY = {
   work: 'work',
   personal: 'personal',
-} as const;
+} as const
 
-export default CATEGORY;
-
+export default CATEGORY

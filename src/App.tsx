@@ -1,13 +1,13 @@
-import { useState } from "react"
-import { Toaster } from "react-hot-toast";
-import { IconPlus } from "@tabler/icons-react";
-import type { Note } from "./schemas/note"
-import NoteForm from "./components/note-form"
-import NoteList from "./components/note-list";
+import { useState } from 'react'
+import { Toaster } from 'react-hot-toast'
+import { IconPlus } from '@tabler/icons-react'
+import type { Note } from './schemas/note'
+import NoteForm from './components/note-form'
+import NoteList from './components/note-list'
 
 const App = () => {
-  const [notes, setNotes] = useState<Note[]>([]);
-  const [isShowingForm, setIsShowingForm] = useState(false);
+  const [notes, setNotes] = useState<Note[]>([])
+  const [isShowingForm, setIsShowingForm] = useState(false)
 
   return (
     <>
@@ -16,7 +16,9 @@ const App = () => {
         {!isShowingForm && (
           <button
             className="flex items-center justify-center gap-2 px-8 h-8 border-2 border-purple-900 text-purple-900 rounded-full font-medium cursor-pointer"
-            onClick={() => setIsShowingForm(true)}
+            onClick={() => {
+              setIsShowingForm(true)
+            }}
           >
             <span>Create Note</span>
             <IconPlus className="w-4 h-4" />
@@ -28,14 +30,16 @@ const App = () => {
               setNotes((prevNotes) => [...prevNotes, note])
               setIsShowingForm(false)
             }}
-            onCancel={() => setIsShowingForm(false)}
+            onCancel={() => {
+              setIsShowingForm(false)
+            }}
           />
         )}
         {!isShowingForm && <NoteList notes={notes} />}
       </div>
       <Toaster />
     </>
-  );
+  )
 }
 
 export default App

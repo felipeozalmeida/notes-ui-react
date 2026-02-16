@@ -2,7 +2,6 @@ const PRIORITY = {
   high: 'high',
   medium: 'medium',
   low: 'low',
-} as const;
+} as const
 
-export default PRIORITY;
-
+export default PRIORITY
