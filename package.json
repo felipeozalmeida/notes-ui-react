@@ -8,10 +8,19 @@
     "npm": ">=10.9.2 <11.0.0"
   },
   "scripts": {
+    "prepare": "husky",
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "run-p type-check lint format build-only",
+    "type-check": "tsc --build",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint . --fix",
+    "lint": "run-p lint:js",
+    "lint:fix": "run-p lint:js:fix",
+    "format": "prettier --check src/",
+    "format:fix": "prettier --write src/",
+    "build-only": "tsc -b && vite build",
+    "preview": "vite preview",
+    "commit": "commit"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.36.0",
@@ -24,17 +33,32 @@
     "zod": "^4.2.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/prompt-cli": "^19.8.1",
     "@eslint/js": "^9.36.0",
     "@types/node": "^24.6.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",
     "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
+    "npm-run-all2": "^8.0.4",
+    "prettier": "^3.6.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.45.0",
     "vite": "^7.1.7"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "!(src/**/*.{ts,tsx})": "prettier --write --ignore-unknown"
   }
 }
