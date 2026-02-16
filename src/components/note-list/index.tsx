@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import toast from 'react-hot-toast'
-import { IconCopy } from '@tabler/icons-react'
+import { IconCopy, IconTrash } from '@tabler/icons-react'
 import PRIORITY from '../../constants/priority'
 import type { Note } from '../../schemas/note'
 
@@ -12,9 +12,10 @@ const PRIORITY_COLOR = {
 
 interface NoteListProps {
   notes: Note[]
+  onDelete: (id: Note['id']) => void
 }
 
-const NoteList: FC<NoteListProps> = ({ notes }) => {
+const NoteList: FC<NoteListProps> = ({ notes, onDelete }) => {
   if (!notes.length) {
     return <p className="text-center text-gray-500">No notes available.</p>
   }
@@ -41,7 +42,7 @@ const NoteList: FC<NoteListProps> = ({ notes }) => {
             <span className="flex items-center gap-1">
               <button
                 type="button"
-                className="p-1 flex items-center text-neutral-400 hover:text-neutral-600 focus:outline-none cursor-pointer"
+                className="p-1 flex items-center gap-1 text-neutral-400 focus:outline-none cursor-pointer"
                 title="Copy ID"
                 onClick={() => {
                   void navigator.clipboard.writeText(note.id.toString())
@@ -50,8 +51,20 @@ const NoteList: FC<NoteListProps> = ({ notes }) => {
                 aria-label="Copy ID"
               >
                 <IconCopy size={16} stroke={1.5} />
+                <span className="hidden sm:inline text-xs">Copy ID</span>
               </button>
-              <span className="text-xs text-neutral-400">ID: {note.id}</span>
+              <button
+                type="button"
+                className="p-1 flex items-center gap-1 text-neutral-400 focus:outline-none cursor-pointer"
+                title="Delete Note"
+                onClick={() => {
+                  onDelete(note.id)
+                }}
+                aria-label="Delete Note"
+              >
+                <IconTrash size={16} stroke={1.5} />
+                <span className="hidden sm:inline text-xs">Delete</span>
+              </button>
             </span>
           </div>
         </li>

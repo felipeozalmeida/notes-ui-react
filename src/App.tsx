@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import { IconPlus } from '@tabler/icons-react'
 import type { Note } from './schemas/note'
 import NoteForm from './components/note-form'
@@ -8,6 +8,14 @@ import NoteList from './components/note-list'
 const App = () => {
   const [notes, setNotes] = useState<Note[]>([])
   const [isShowingForm, setIsShowingForm] = useState(false)
+
+  const handleDelete = (id: Note['id']) => {
+    const isConfirmed = window.confirm('Are you sure you want to delete this note?')
+    if (isConfirmed) {
+      setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id))
+      toast.success('Note deleted successfully!')
+    }
+  }
 
   return (
     <>
@@ -35,7 +43,7 @@ const App = () => {
             }}
           />
         )}
-        {!isShowingForm && <NoteList notes={notes} />}
+        {!isShowingForm && <NoteList notes={notes} onDelete={handleDelete} />}
       </div>
       <Toaster />
     </>
