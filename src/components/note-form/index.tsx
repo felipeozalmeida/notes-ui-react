@@ -5,6 +5,7 @@ import CATEGORY from '../../constants/category'
 import noteSchema, { type Note } from '../../schemas/note'
 import InputText from '../input-text'
 import InputSelect from '../input-select'
+import InputTextarea from '../input-textarea'
 
 const INITIAL_FORM_DATA = {
   title: '',
@@ -69,19 +70,13 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate, onCancel }) => {
           onChange={handleChange}
         />
       </div>
-      <div className="flex flex-col gap-1 items-stretch justify-between">
-        <label className="font-medium" htmlFor="description">
-          Description
-        </label>
-        <textarea
-          className="h-40 px-3 py-2 border border-neutral-300 rounded-2xl resize-none"
-          id="description"
-          name="description"
-          placeholder="wth is happening with that pipeline?!"
-          value={formData.description}
-          onChange={handleChange}
-        ></textarea>
-      </div>
+      <InputTextarea
+        label="Description"
+        name="description"
+        placeholder="wth is happening with that pipeline?!"
+        value={formData.description}
+        onChange={handleChange}
+      />
       <div className="flex flex-col gap-1 mt-1 sm:flex-row-reverse sm:justify-start">
         <button
           className="h-8 px-8 bg-purple-900 text-white rounded-full cursor-pointer font-medium"
