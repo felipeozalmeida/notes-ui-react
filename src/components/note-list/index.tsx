@@ -43,12 +43,12 @@ const NoteList: FC<NoteListProps> = ({ notes, onDelete }) => {
               <button
                 type="button"
                 className="p-1 flex items-center gap-1 text-neutral-400 focus:outline-none cursor-pointer"
-                title="Copy ID"
+                title="Copy Note ID"
                 onClick={() => {
                   void navigator.clipboard.writeText(note.id.toString())
                   toast.success('Note ID copied!')
                 }}
-                aria-label="Copy ID"
+                aria-label="Copy Note ID"
               >
                 <IconCopy size={16} stroke={1.5} />
                 <span className="hidden sm:inline text-xs">Copy ID</span>
