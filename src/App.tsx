@@ -20,7 +20,9 @@ const App = () => {
   return (
     <>
       <div className="flex flex-col gap-4 items-stretch justify-center w-full max-w-[640px] p-6 bg-neutral-100 text-neutral-700 rounded-lg shadow-lg">
-        <h1 className="text-2xl font-medium text-center">📝 Notes</h1>
+        <h1 className="py-2 text-3xl font-extralight text-center">
+          {isShowingForm ? 'Create Note' : 'Notes'}
+        </h1>
         {!isShowingForm && (
           <button
             className="flex items-center justify-center gap-2 px-8 h-8 border-2 border-purple-900 text-purple-900 rounded-full font-medium cursor-pointer"
