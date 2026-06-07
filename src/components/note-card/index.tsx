@@ -10,12 +10,12 @@ const PRIORITY_COLOR = {
   [PRIORITY.low]: 'bg-green-100 text-green-700',
 } as const
 
-interface NoteProps {
+interface NoteCardProps {
   note: NoteType
   onDelete: (id: NoteType['id']) => void
 }
 
-const Note: FC<NoteProps> = ({ note, onDelete }) => {
+const NoteCard: FC<NoteCardProps> = ({ note, onDelete }) => {
   return (
     <li className="bg-white rounded-lg shadow p-4 border border-neutral-200 flex flex-col gap-2">
       <div className="flex items-center justify-between gap-2">
@@ -61,4 +61,4 @@ const Note: FC<NoteProps> = ({ note, onDelete }) => {
   )
 }
 
-export default Note
+export default NoteCard
