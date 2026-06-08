@@ -1,12 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { IconPlus } from '@tabler/icons-react'
-import type { Note } from './schemas/note'
+import { z } from 'zod'
+import noteSchema, { type Note } from './schemas/note'
 import NoteForm from './components/note-form'
 import NoteList from './components/note-list'
 
 const App = () => {
-  const [notes, setNotes] = useState<Note[]>([])
+  const [notes, setNotes] = useState<Note[]>(() => {
+    const item = localStorage.getItem('notes')
+    if (!item) return []
+
+    const parsed: unknown = JSON.parse(item)
+    const result = z.array(noteSchema).safeParse(parsed)
+    return result.success ? result.data : []
+  })
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }, [notes])
+
   const [isShowingForm, setIsShowingForm] = useState(false)
 
   const handleShowForm = () => {
@@ -24,10 +37,10 @@ const App = () => {
 
   const handleDelete = (id: Note['id']) => {
     const isConfirmed = window.confirm('Are you sure you want to delete this note?')
-    if (isConfirmed) {
-      setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id))
-      toast.success('Note deleted successfully!')
-    }
+    if (!isConfirmed) return
+
+    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id))
+    toast.success('Note deleted successfully!')
   }
 
   return (
