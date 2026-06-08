@@ -15,8 +15,8 @@ const INITIAL_FORM_DATA = {
 }
 
 interface NoteFormProps {
-  onCreate: (note: Note) => void
   onCancel: () => void
+  onCreate: (note: Note) => void
 }
 
 const NoteForm: FC<NoteFormProps> = ({ onCreate, onCancel }) => {

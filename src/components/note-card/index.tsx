@@ -16,6 +16,15 @@ interface NoteCardProps {
 }
 
 const NoteCard: FC<NoteCardProps> = ({ note, onDelete }) => {
+  const handleCopyId = () => {
+    void navigator.clipboard.writeText(note.id.toString())
+    toast.success('Note ID copied!')
+  }
+
+  const handleDelete = () => {
+    onDelete(note.id)
+  }
+
   return (
     <li className="bg-white rounded-lg shadow p-4 border border-neutral-200 flex flex-col gap-2">
       <div className="flex items-center justify-between gap-2">
@@ -34,10 +43,7 @@ const NoteCard: FC<NoteCardProps> = ({ note, onDelete }) => {
             type="button"
             className="p-1 flex items-center gap-1 text-neutral-400 focus:outline-none cursor-pointer"
             title="Copy Note ID"
-            onClick={() => {
-              void navigator.clipboard.writeText(note.id.toString())
-              toast.success('Note ID copied!')
-            }}
+            onClick={handleCopyId}
             aria-label="Copy Note ID"
           >
             <IconCopy size={16} stroke={1.5} />
@@ -47,9 +53,7 @@ const NoteCard: FC<NoteCardProps> = ({ note, onDelete }) => {
             type="button"
             className="p-1 flex items-center gap-1 text-neutral-400 focus:outline-none cursor-pointer"
             title="Delete Note"
-            onClick={() => {
-              onDelete(note.id)
-            }}
+            onClick={handleDelete}
             aria-label="Delete Note"
           >
             <IconTrash size={16} stroke={1.5} />

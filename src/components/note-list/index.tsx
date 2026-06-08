@@ -1,10 +1,10 @@
 import type { FC } from 'react'
-import type { Note as NoteType } from '../../schemas/note'
+import type { Note } from '../../schemas/note'
 import NoteCard from '../note-card'
 
 interface NoteListProps {
-  notes: NoteType[]
-  onDelete: (id: NoteType['id']) => void
+  notes: Note[]
+  onDelete: (id: Note['id']) => void
 }
 
 const NoteList: FC<NoteListProps> = ({ notes, onDelete }) => {

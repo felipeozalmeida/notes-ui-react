@@ -9,6 +9,19 @@ const App = () => {
   const [notes, setNotes] = useState<Note[]>([])
   const [isShowingForm, setIsShowingForm] = useState(false)
 
+  const handleShowForm = () => {
+    setIsShowingForm(true)
+  }
+
+  const handleCancel = () => {
+    setIsShowingForm(false)
+  }
+
+  const handleCreate = (note: Note) => {
+    setNotes((prevNotes) => [...prevNotes, note])
+    setIsShowingForm(false)
+  }
+
   const handleDelete = (id: Note['id']) => {
     const isConfirmed = window.confirm('Are you sure you want to delete this note?')
     if (isConfirmed) {
@@ -26,25 +39,13 @@ const App = () => {
         {!isShowingForm && (
           <button
             className="flex items-center justify-center gap-2 px-8 h-8 border-2 border-purple-900 text-purple-900 rounded-full font-medium cursor-pointer"
-            onClick={() => {
-              setIsShowingForm(true)
-            }}
+            onClick={handleShowForm}
           >
             <span>Create Note</span>
             <IconPlus className="w-4 h-4" />
           </button>
         )}
-        {isShowingForm && (
-          <NoteForm
-            onCreate={(note) => {
-              setNotes((prevNotes) => [...prevNotes, note])
-              setIsShowingForm(false)
-            }}
-            onCancel={() => {
-              setIsShowingForm(false)
-            }}
-          />
-        )}
+        {isShowingForm && <NoteForm onCreate={handleCreate} onCancel={handleCancel} />}
         {!isShowingForm && <NoteList notes={notes} onDelete={handleDelete} />}
       </div>
       <Toaster />
