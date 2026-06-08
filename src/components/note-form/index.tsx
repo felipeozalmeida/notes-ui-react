@@ -30,13 +30,13 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate, onCancel }) => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
-    const newNote = { ...formData, id: Date.now() }
-    const parseResult = noteSchema.safeParse(newNote)
-    if (!parseResult.success) {
+    const note = { ...formData, id: Date.now() }
+    const result = noteSchema.safeParse(note)
+    if (!result.success) {
       toast.error('All fields are required.')
       return
     }
-    onCreate(parseResult.data)
+    onCreate(result.data)
     setFormData(INITIAL_FORM_DATA)
     toast.success('Note created successfully!')
   }
