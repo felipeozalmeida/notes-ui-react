@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import toast from 'react-hot-toast'
 import { IconCopy, IconTrash } from '@tabler/icons-react'
 import PRIORITY from '../../constants/priority'
-import type { Note as NoteType } from '../../schemas/note'
+import type { Note } from '../../schemas/note'
 
 const PRIORITY_COLOR = {
   [PRIORITY.high]: 'bg-red-100 text-red-700',
@@ -11,8 +11,8 @@ const PRIORITY_COLOR = {
 } as const
 
 interface NoteCardProps {
-  note: NoteType
-  onDelete: (id: NoteType['id']) => void
+  note: Note
+  onDelete: (id: Note['id']) => void
 }
 
 const NoteCard: FC<NoteCardProps> = ({ note, onDelete }) => {
