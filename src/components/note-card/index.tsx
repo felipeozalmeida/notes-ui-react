@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import toast from 'react-hot-toast'
 import { IconCopy, IconTrash } from '@tabler/icons-react'
 import PRIORITY from '../../constants/priority'
-import type { Note } from '../../schemas/note'
+import type { Note } from '../../schemas/note-schema'
 
 const PRIORITY_COLOR = {
   [PRIORITY.high]: 'bg-red-100 text-red-700',

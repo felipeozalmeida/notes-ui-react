@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import type { Note } from '../../schemas/note'
+import type { Note } from '../../schemas/note-schema'
 import NoteCard from '../note-card'
 
 interface NoteListProps {

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { IconPlus } from '@tabler/icons-react'
 import { z } from 'zod'
-import noteSchema, { type Note } from './schemas/note'
+import noteSchema, { type Note } from './schemas/note-schema'
 import NoteForm from './components/note-form'
 import NoteList from './components/note-list'
 

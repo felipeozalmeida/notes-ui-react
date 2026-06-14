@@ -2,7 +2,7 @@ import { useState, type ChangeEventHandler, type FC, type FormEventHandler } fro
 import toast from 'react-hot-toast'
 import PRIORITY from '../../constants/priority'
 import CATEGORY from '../../constants/category'
-import noteSchema, { type Note } from '../../schemas/note'
+import noteSchema, { type Note } from '../../schemas/note-schema'
 import InputText from '../input-text'
 import InputSelect from '../input-select'
 import InputTextarea from '../input-textarea'
