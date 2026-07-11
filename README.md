@@ -20,7 +20,7 @@ This notes UI implementation covers these key concepts:
 8. **Runtime Validation** - Zod schemas that validate form input and safely rehydrate `localStorage` data
 9. **Styling** - Tailwind CSS v4 utility-first styling with conditional classnames via `clsx`
 10. **Accessibility (a11y)** - `useId()` for label/input association across form fields
-11. **Tooling & Conventions** - ESLint, Prettier, Husky, lint-staged, and Conventional Commits
+11. **Tooling & Conventions** - ESLint, Stylelint, Prettier (with `prettier-plugin-tailwindcss` for class sorting), Husky, lint-staged, and Conventional Commits
 12. **Deployment** - Continuous deployment to GitHub Pages via GitHub Actions
 
 ## Getting Started
