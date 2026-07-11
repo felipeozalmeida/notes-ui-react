@@ -14,8 +14,10 @@
     "type-check": "tsc --build",
     "lint:js": "eslint .",
     "lint:js:fix": "eslint . --fix",
-    "lint": "run-p --aggregate-output lint:js",
-    "lint:fix": "run-p --aggregate-output lint:js:fix",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "lint:css:fix": "stylelint \"src/**/*.css\" --fix strict",
+    "lint": "run-p --aggregate-output lint:js lint:css",
+    "lint:fix": "run-p --aggregate-output lint:js:fix lint:css:fix",
     "format": "prettier --check src/",
     "format:fix": "prettier --write src/",
     "build-only": "vite build",
@@ -36,6 +38,7 @@
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
     "@commitlint/prompt-cli": "19.8.1",
+    "@dreamsicle.io/stylelint-config-tailwindcss": "1.2.2",
     "@eslint/js": "9.36.0",
     "@types/node": "24.6.0",
     "@types/react": "19.1.16",
@@ -50,6 +53,10 @@
     "lint-staged": "16.1.5",
     "npm-run-all2": "8.0.4",
     "prettier": "3.6.2",
+    "stylelint": "17.14.0",
+    "stylelint-config-recess-order": "7.7.0",
+    "stylelint-config-standard": "40.0.0",
+    "stylelint-order": "8.1.1",
     "typescript": "5.9.3",
     "typescript-eslint": "8.45.0",
     "vite": "7.1.7"
@@ -59,6 +66,10 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "!(src/**/*.{ts,tsx})": "prettier --write --ignore-unknown"
+    "src/**/*.css": [
+      "stylelint --fix strict",
+      "prettier --write"
+    ],
+    "!(src/**/*.{ts,tsx,css})": "prettier --write --ignore-unknown"
   }
 }
