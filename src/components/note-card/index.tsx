@@ -26,38 +26,38 @@ const NoteCard: FC<NoteCardProps> = ({ note, onDelete }) => {
   }
 
   return (
-    <li className="bg-white rounded-lg shadow p-4 border border-neutral-200 flex flex-col gap-2">
+    <li className="flex flex-col gap-2 rounded-lg border border-neutral-200 bg-white p-4 shadow">
       <div className="flex items-center justify-between gap-2">
         <strong className="text-lg font-semibold text-neutral-800">{note.title}</strong>
-        <span className="text-xs px-2 py-1 rounded bg-blue-100 text-blue-700 font-medium">
+        <span className="rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700">
           {note.category}
         </span>
       </div>
-      <p className="text-neutral-600 text-sm">{note.description}</p>
-      <div className="flex items-center justify-between gap-2 mt-2">
-        <span className={`text-xs px-2 py-1 rounded font-medium ${PRIORITY_COLOR[note.priority]}`}>
+      <p className="text-sm text-neutral-600">{note.description}</p>
+      <div className="mt-2 flex items-center justify-between gap-2">
+        <span className={`rounded px-2 py-1 text-xs font-medium ${PRIORITY_COLOR[note.priority]}`}>
           Priority: {note.priority}
         </span>
         <span className="flex items-center gap-1">
           <button
             type="button"
-            className="p-1 flex items-center gap-1 text-neutral-400 focus:outline-none cursor-pointer"
+            className="flex cursor-pointer items-center gap-1 p-1 text-neutral-400 focus:outline-none"
             title="Copy Note ID"
             onClick={handleCopyId}
             aria-label="Copy Note ID"
           >
             <IconCopy size={16} stroke={1.5} />
-            <span className="hidden sm:inline text-xs">Copy ID</span>
+            <span className="hidden text-xs sm:inline">Copy ID</span>
           </button>
           <button
             type="button"
-            className="p-1 flex items-center gap-1 text-neutral-400 focus:outline-none cursor-pointer"
+            className="flex cursor-pointer items-center gap-1 p-1 text-neutral-400 focus:outline-none"
             title="Delete Note"
             onClick={handleDelete}
             aria-label="Delete Note"
           >
             <IconTrash size={16} stroke={1.5} />
-            <span className="hidden sm:inline text-xs">Delete</span>
+            <span className="hidden text-xs sm:inline">Delete</span>
           </button>
         </span>
       </div>

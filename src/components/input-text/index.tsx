@@ -12,12 +12,12 @@ const InputText: FC<InputTextProps> = ({ label, name, placeholder, value, onChan
   const id = useId()
   const inputId = `${id}-${name}`
   return (
-    <div className="flex flex-col gap-1 items-stretch justify-between">
+    <div className="flex flex-col items-stretch justify-between gap-1">
       <label className="font-medium" htmlFor={inputId}>
         {label}
       </label>
       <input
-        className="h-8 px-3 border border-neutral-300 rounded-full"
+        className="h-8 rounded-full border border-neutral-300 px-3"
         type="text"
         id={inputId}
         name={name}

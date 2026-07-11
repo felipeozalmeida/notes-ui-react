@@ -42,7 +42,7 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate, onCancel }) => {
   }
 
   return (
-    <form className="flex flex-col gap-3 items-stretch justify-center" onSubmit={handleSubmit}>
+    <form className="flex flex-col items-stretch justify-center gap-3" onSubmit={handleSubmit}>
       <InputText
         label="Title"
         name="title"
@@ -77,15 +77,15 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate, onCancel }) => {
         value={formData.description}
         onChange={handleChange}
       />
-      <div className="flex flex-col gap-1 mt-1 sm:flex-row-reverse sm:justify-start">
+      <div className="mt-1 flex flex-col gap-1 sm:flex-row-reverse sm:justify-start">
         <button
-          className="h-8 px-8 bg-purple-900 text-white rounded-full cursor-pointer font-medium"
+          className="h-8 cursor-pointer rounded-full bg-purple-900 px-8 font-medium text-white"
           type="submit"
         >
           Submit
         </button>
         <button
-          className="h-8 px-8 text-neutral-500 font-medium cursor-pointer"
+          className="h-8 cursor-pointer px-8 font-medium text-neutral-500"
           type="button"
           onClick={onCancel}
         >

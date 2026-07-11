@@ -23,12 +23,12 @@ const InputSelect: FC<InputSelectProps> = ({
   const id = useId()
   const inputId = `${id}-${name}`
   return (
-    <div className={clsx('flex flex-col gap-1 items-stretch justify-between', className)}>
+    <div className={clsx('flex flex-col items-stretch justify-between gap-1', className)}>
       <label className="font-medium" htmlFor={inputId}>
         {label}
       </label>
       <select
-        className="h-8 px-3 border border-neutral-300 rounded-full"
+        className="h-8 rounded-full border border-neutral-300 px-3"
         name={name}
         id={inputId}
         value={value}

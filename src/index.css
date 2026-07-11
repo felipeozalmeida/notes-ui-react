@@ -1,5 +1,5 @@
 @import 'tailwindcss';
 
 #root {
-  @apply flex items-center justify-center w-full min-h-dvh p-4 bg-purple-900;
+  @apply flex min-h-dvh w-full items-center justify-center bg-purple-900 p-4;
 }
