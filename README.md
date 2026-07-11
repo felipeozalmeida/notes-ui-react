@@ -4,6 +4,8 @@ A local-first notes manager that demonstrates essential React concepts and
 patterns. This project showcases how state persistence, form handling, and
 runtime validation work together to build an interactive note-taking app.
 
+**Live demo:** https://felipeozalmeida.github.io/notes-ui-react/
+
 ## What You'll Find Here
 
 This notes UI implementation covers these key concepts:
