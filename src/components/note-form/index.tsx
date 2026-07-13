@@ -1,4 +1,4 @@
-import { useState, type ChangeEventHandler, type FC, type FormEventHandler } from 'react'
+import { useState, type ChangeEventHandler, type FC, type SubmitEventHandler } from 'react'
 import toast from 'react-hot-toast'
 import PRIORITY from '../../constants/priority'
 import CATEGORY from '../../constants/category'
@@ -28,7 +28,7 @@ const NoteForm: FC<NoteFormProps> = ({ onCreate, onCancel }) => {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }))
   }
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
     const note = { ...formData, id: Date.now() }
     const result = noteSchema.safeParse(note)
