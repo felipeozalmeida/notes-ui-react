@@ -72,5 +72,10 @@
       "prettier --write"
     ],
     "!(src/**/*.{ts,tsx,css})": "prettier --write --ignore-unknown"
+  },
+  "allowScripts": {
+    "@tailwindcss/oxide@4.1.14": true,
+    "esbuild@0.28.1": true,
+    "fsevents@2.3.3": true
   }
 }
